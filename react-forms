@@ -1,0 +1,46 @@
+import React, { useRef, useState } from "react";
+import "./style.css";
+
+export default function App(){
+  // const [count, setCount] = useState(0);
+  const [fname, setFname] = useState("");
+  const [gender, setGender] = useState("");
+
+  const onHandleChange = (e) => {
+    setFname(e.target.value);
+  };
+
+  const handleSubmit = (e) =>{
+    console.log("Submitted")
+  }
+
+  return (
+    <div>
+      <form id="myForm" onSubmit={handleSubmit}>
+        Name:
+        <input
+          type="text"
+          name="fname"
+          onChange={onHandleChange}
+          required
+        ></input>
+        Gender: Male
+        <input
+          type="radio"
+          name="gender"
+          value="male"
+          onChange={(e) => setGender(e.target.value)}
+        ></input>
+        Female
+        <input
+          type="radio"
+          name="gender"
+          onChange={(e) => setGender(e.target.value)}
+        ></input>
+        <button className="btn" type="submit"></button>
+      </form>
+    </div>
+  );
+};
+
+// export default App;
