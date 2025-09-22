@@ -1,25 +1,54 @@
 import React, { useState } from "react";
+import ProductCard from './ProductCard'
 import './style.css';
 
 export default function App() {
+  const obj1 = {
+    price: 50000,
+    img:"https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    product: "Camera",
+    id: 124
+  }
+  return (
+    <div style={{ padding: "20px" }}>
+      <ProductCard details={obj1}/>
+    </div>
+  );
+}
+
+
+
+import React, { useState } from "react";
+import './style.css';
+
+export default function ProductCard({details}) {
+  const [cartItems, setCartItems] = useState()
+  function handleClick(id){
+    setCartItems({...cartItems, itemId: id})
+    console.log(id)
+  }
   return (
     <div style={{ padding: "20px" }} className="product">
+      {/*https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500  */}
       <div>
-        <h3>Product: Camera</h3>
+        <h2>Product: {details.product}</h2>
 
         <img
-          src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+          src={details.img}
           alt="camera"
           className="image"
         />
         <div>
-          <span className="price"> Rs. 50,000</span>
-          <button className="add-to-cart">Add to cart</button>
+          <span className="price"> Rs. {details.price}</span>
+          <button className="add-to-cart" onClick={()=>handleClick(details.id)}>Add to cart</button>
         </div>
       </div>
+      {console.log(cartItems)}
+      {cartItems? cartItems.itemId: null}
     </div>
   );
 }
+
 
 .btn {
   font-size: 2rem;
