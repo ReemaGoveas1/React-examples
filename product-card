@@ -1,0 +1,49 @@
+import React, { useState } from "react";
+import './style.css';
+
+export default function App() {
+  return (
+    <div style={{ padding: "20px" }} className="product">
+      <div>
+        <h3>Product: Camera</h3>
+
+        <img
+          src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+          alt="camera"
+          className="image"
+        />
+        <div>
+          <span className="price"> Rs. 50,000</span>
+          <button className="add-to-cart">Add to cart</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+.btn {
+  font-size: 2rem;
+}
+
+.product{
+  background-color: white;
+  width:20em;
+  box-shadow: 0 2px 6px;
+  border-radius: 5px;
+}
+
+.image{
+  width: 30vw;
+}
+
+.price{
+    font-weight: bold;
+}
+
+.add-to-cart{
+  display:block;
+  background-color: lightblue;
+  border:none;
+  width: 20em;
+  height: 3em;
+}
