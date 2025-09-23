@@ -1,0 +1,31 @@
+import React, { useState, useReducer } from "react";
+
+export default function ReduxCounter() {
+  //   const [counter, setCounter] = useState(0);
+  const initialState = { count: 0 };
+  const [state, dispatch] = useReducer(reducerCounter, initialState);
+
+  return (
+    <div>
+      <h2>Counter: {state.count}</h2>
+      {/* {console.log(count)} */}
+      <button onClick={() => dispatch({ type: "Increment" })}>Increment</button>
+      <button onClick={() => dispatch({ type: "Decrement" })}>Decrement</button>
+
+      {/* <button onClick={() => setCounter(counter + 1)}>Increment</button>
+      <button onClick={() => setCounter(counter - 1)}>Decrement</button> */}
+    </div>
+  );
+}
+
+function reducerCounter(state, action) {
+  switch (action.type) {
+    case "Increment":
+      return { count: state.count + 1 };
+      break;
+    case "Decrement":
+      return { count: state.count - 1 };
+    default:
+      throw new Error();
+  }
+}
