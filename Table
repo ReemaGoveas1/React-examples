@@ -1,0 +1,38 @@
+import React from "react";
+
+export default function Table() {
+  const arrObj = [
+    {
+      a1: 89,
+      b1: 88,
+    },
+    {
+      a1: 78,
+      b1: 67,
+    },
+  ];
+  const cols = Object.keys(arrObj[0]);
+  return (
+    <>
+      <h2>Table</h2>
+      <table>
+        <thead>
+          <tr>
+            {Object.keys(arrObj[0]).map((key, i) => {
+              return <th key={i}>{key}</th>;
+            })}
+          </tr>
+        </thead>
+        <tbody>
+          {arrObj.map((arr, index) => (
+            <tr key={index}>
+              {cols.map((col, ind) => (
+                <td key={ind}>{arr[col]}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+}
